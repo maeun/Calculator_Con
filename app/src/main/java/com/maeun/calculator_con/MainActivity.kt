@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.NumberFormat
 
 //import android.support.annotation.RequiresApi
 //import android.text.Editable
@@ -19,25 +21,201 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val nf = NumberFormat.getInstance()
+
+        var value_fifty_thousand : Int = 0
+        var value_ten_thousand : Int = 0
+        var value_five_thousand : Int = 0
+        var value_thousand : Int = 0
+        var value_five_hundred : Int = 0
+        var value_hundred : Int = 0
+        var value_fifty: Int = 0
+        var value_ten : Int = 0
+        var total : Int = 0
+
+        var hundred_family : Int = 0
+        var fivehundred40_family : Int = 0
+        var fivehundred50_family : Int = 0
+        var total_family : Int = 0
+
+        fun calculate_total() : String{
+            total = value_fifty_thousand + value_ten_thousand + value_five_thousand + value_thousand + value_five_hundred + value_hundred + value_fifty + value_ten
+            return nf.format(total).toString()
+        }
+        fun calculate_total_family() : String{
+            total_family = hundred_family + fivehundred40_family + fivehundred50_family
+            return nf.format(total_family).toString()
+        }
+
         main_fifty_thousand_edit.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                if (main_fifty_thousand_edit.text.toString() == "") {
+                    value_fifty_thousand = 0
+                } else {
+                    value_fifty_thousand = main_fifty_thousand_edit.text.toString().toInt() * 50000
+                }
+                main_total_tv.text = calculate_total()
             }
-
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
-
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                main_total_tv.text = (main_fifty_thousand_edit.text.toString().toInt() *50000).toString()
             }
-
         })
+        main_ten_thousand_edit.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_ten_thousand_edit.text.toString() == "") {
+                    value_ten_thousand = 0
+                } else {
+                    value_ten_thousand = main_ten_thousand_edit.text.toString().toInt() * 10000
+                }
+                main_total_tv.text = calculate_total()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+        main_five_thousand_edit.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_five_thousand_edit.text.toString() == "") {
+                    value_five_thousand = 0
+                } else {
+                    value_five_thousand = main_five_thousand_edit.text.toString().toInt() * 5000
+                }
+                main_total_tv.text = calculate_total()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+        main_thousand_edit.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_thousand_edit.text.toString() == "") {
+                    value_thousand = 0
+                } else {
+                    value_thousand = main_thousand_edit.text.toString().toInt() * 1000
+                }
+                main_total_tv.text = calculate_total()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+        main_five_hundred_edit.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_five_hundred_edit.text.toString() == "") {
+                    value_five_hundred = 0
+                } else {
+                    value_five_hundred = main_five_hundred_edit.text.toString().toInt() * 500
+                }
+                main_total_tv.text = calculate_total()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+        main_hundred_edit.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_hundred_edit.text.toString() == "") {
+                    value_hundred = 0
+                } else {
+                    value_hundred = main_hundred_edit.text.toString().toInt() * 100
+                }
+                main_total_tv.text = calculate_total()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+        main_fifty_edit.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_fifty_edit.text.toString() == "") {
+                    value_fifty = 0
+                } else {
+                    value_fifty = main_fifty_edit.text.toString().toInt() * 50
+                }
+                main_total_tv.text = calculate_total()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+        main_ten_edit.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_ten_edit.text.toString() == "") {
+                    value_ten = 0
+                } else {
+                    value_ten = main_ten_edit.text.toString().toInt() * 10
+                }
+                main_total_tv.text = calculate_total()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+
+        main_hundred_family_edit.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_hundred_family_edit.text.toString() == "") {
+                    hundred_family = 0
+                } else {
+                    hundred_family = main_hundred_family_edit.text.toString().toInt() * 5000
+                }
+                main_hundred_family_tv.text = nf.format(hundred_family).toString()
+                main_total_family_tv.text = calculate_total_family()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+        main_fivehundred40_family_edit.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_fivehundred40_family_edit.text.toString() == "") {
+                    fivehundred40_family = 0
+                } else {
+                    fivehundred40_family = main_fivehundred40_family_edit.text.toString().toInt() * 20000
+                }
+                main_fivehundred40_family_tv.text = nf.format(fivehundred40_family).toString()
+                main_total_family_tv.text = calculate_total_family()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+        main_fivehundred50_family_edit.addTextChangedListener(object : TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+                if (main_fivehundred50_family_edit.text.toString() == "") {
+                    fivehundred50_family = 0
+                } else {
+                    fivehundred50_family = main_fivehundred50_family_edit.text.toString().toInt() * 25000
+                }
+                main_fivehundred50_family_tv.text = nf.format(fivehundred50_family).toString()
+                main_total_family_tv.text = calculate_total_family()
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+
+
+
+
     }
+
 }
 
 //
